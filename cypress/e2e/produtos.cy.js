@@ -94,7 +94,7 @@ describe('Testes da Funcionalidade Produtos', () => {
         })
     });
 
-    it('Deve deletar um produto previamente cadastrado', () => {
+    it.only('Deve deletar um produto previamente cadastrado', () => {
         let produto = `Produto EBAC ${Math.floor(Math.random() * 100000000)}`
         cy.cadastrarProduto(token, produto, 250, "Descrição do produto novo", 180)
         .then(response => {

@@ -22,6 +22,9 @@
 //
 //
 // -- This will overwrite an existing command --
+
+const { ur } = require("@faker-js/faker")
+
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 Cypress.Commands.add('token', (email, senha) => {
     cy.request({
@@ -49,5 +52,19 @@ Cypress.Commands.add('token', (email, senha) => {
             "quantidade": quantidade
           }, 
           failOnStatusCode: false
+    })
+ })
+
+ Cypress.Commands.add('cadastrarUsuario', (nomeFaker, emailFaker, senha, adm) =>{
+    cy.request({
+        method: 'POST',
+        url: 'usuarios',
+        body: {
+            "nome": nomeFaker,
+            "email": emailFaker,
+            "password": senha,
+            "administrador": adm
+        },
+        failOnStatusCode: false
     })
  })
